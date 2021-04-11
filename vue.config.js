@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/vue-task1/'
+    publicPath: 'vue-task1'
 }
