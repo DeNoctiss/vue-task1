@@ -57,7 +57,7 @@
                      v-model="firstPage.year"
                      :class="{invalid: ($v.firstPage.year.$dirty && $v.firstPage.year.required), 'error-input': ($v.firstPage.year.$error)}">
             </div>
-            <p class="error"><span v-if="$v.firstPage.year.$error" >Ошибка: Обязательные поля, проверьте правильность введенных данных</span></p>
+            <p class="error"><span v-if="$v.firstPage.year.$error || $v.firstPage.mounth.$error || $v.firstPage.day.$error" >Ошибка: Обязательные поля, проверьте правильность введенных данных</span></p>
           </div>
           <div class="required-block">
             <label class="label" for="phone" >Номер телефона<span>*</span></label>
@@ -198,7 +198,7 @@
                      v-model="thirdPage.year"
                      :class="{invalid: ($v.thirdPage.year.$dirty && $v.thirdPage.year.required), 'error-input': ($v.thirdPage.year.$error)}">
             </div>
-            <p class="error"><span v-if="$v.thirdPage.year.$error" >Ошибка: Обязательные поля, проверьте правильность введенных данных</span></p>
+            <p class="error"><span v-if="$v.thirdPage.year.$error || $v.thirdPage.mounth.$error || $v.thirdPage.day.$error" >Ошибка: Обязательные поля, проверьте правильность введенных данных</span></p>
           </div>
           <div class="required-block">
             <label class="label" for="serial">Серия</label>
@@ -280,18 +280,18 @@ export default {
       },
       day: {
         required,
-        maxValue: 31,
-        minValue: 1
+        maxValue: maxValue(31),
+        minValue: minValue(1)
       },
       mounth: {
         required,
-        maxValue: 12,
-        minValue: 1
+        maxValue: maxValue(12),
+        minValue: minValue(1)
       },
       year: {
         required,
-        maxValue: 2021,
-        minValue: 1930
+        maxValue: maxValue(2021),
+        minValue: minValue(1930)
       },
       phone: {
         required,
@@ -317,18 +317,18 @@ export default {
       },
       day: {
         required,
-        maxValue: 31,
-        minValue: 1
+        maxValue: maxValue(31),
+        minValue: minValue(1)
       },
       mounth: {
         required,
-        maxValue: 12,
-        minValue: 1
+        maxValue: maxValue(12),
+        minValue: minValue(1)
       },
       year: {
         required,
-        maxValue: 2021,
-        minValue: 1930
+        maxValue: maxValue(2021),
+        minValue: minValue(1930)
       }
     }
   },
