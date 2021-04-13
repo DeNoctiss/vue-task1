@@ -13,7 +13,7 @@
                    placeholder="Имя..."
                    v-model="firstPage.name"
                    :class="{invalid: ($v.firstPage.name.$dirty && $v.firstPage.name.required), 'error-input': ($v.firstPage.name.$error)}">
-            <p class="error"><span v-if="$v.firstPage.name.$error" >Ошибка: Обязательное поле, не менее 3 символов</span></p>
+            <p class="error"><span v-if="$v.firstPage.name.$error" >Ошибка: Обязательное поле, не менее 2 символов</span></p>
           </div>
           <div class="required-block">
             <label class="label" for="last-name">Фамилия<span>*</span></label>
@@ -23,33 +23,35 @@
                    v-model="firstPage.lastName"
                    :class="{invalid: ($v.firstPage.lastName.$dirty && $v.firstPage.lastName.required), 'error-input': ($v.firstPage.lastName.$error)}"
             >
-            <p class="error"><span v-if="$v.firstPage.lastName.$error" >Ошибка: Обязательное поле, не менее 3 символов</span></p>
+            <p class="error"><span v-if="$v.firstPage.lastName.$error" >Ошибка: Обязательное поле, не менее 2 символов</span></p>
           </div>
-          <div class="not-required-block">
+          <div class="required-block">
             <label class="label" for="otch">Отчество</label>
             <input type="text" name="otch" placeholder="Отчество..." v-model="firstPage.otch">
+            <p class="error"></p>
           </div>
-          <div class="not-required-block">
+          <div class="required-block">
             <label class="label" for="gender">Пол</label>
             <select name="gender" v-model="firstPage.gender">
               <option>Мужской</option>
               <option>Женский</option>
             </select>
+            <p class="error"></p>
           </div>
           <div class="required-block">
             <label class="label" for="birthday" >Дата рождения<span>*</span></label>
             <div class="date">
-              <input type="text"
+              <input type="number"
                      name="day"
                      placeholder="ДД"
                      v-model="firstPage.day"
                      :class="{invalid: ($v.firstPage.day.$dirty && $v.firstPage.day.required), 'error-input': ($v.firstPage.day.$error)}">
-              <input type="text"
+              <input type="number"
                      name="mounth"
                      placeholder="ММ"
                      v-model="firstPage.mounth"
                      :class="{invalid: ($v.firstPage.mounth.$dirty && $v.firstPage.mounth.required), 'error-input': ($v.firstPage.mounth.$error)}">
-              <input type="text"
+              <input type="number"
                      name="year"
                      placeholder="ГГГГ"
                      v-model="firstPage.year"
@@ -66,7 +68,7 @@
                    :class="{invalid: ($v.firstPage.phone.$dirty && $v.firstPage.phone.required), 'error-input': ($v.firstPage.phone.$error)}">
             <p class="error"><span v-if="$v.firstPage.phone.$error" >Ошибка: Обязательное поле, телефон начинается с 7</span></p>
           </div>
-          <div class="required-block group">
+          <div class="required-block">
             <label class="label" for="group">Группа клиентов<span>*</span></label>
             <select name="group"
                     v-model="firstPage.group"
@@ -77,13 +79,14 @@
             </select>
             <p class="error"><span v-if="$v.firstPage.group.$error" >Ошибка: Обязательное поле</span></p>
           </div>
-          <div class="not-required-block">
+          <div class="required-block">
             <label class="label" for="gender">Лечащий врач</label>
             <select name="gender" v-model="firstPage.doctor">
               <option>Иванов</option>
               <option>Захаров</option>
               <option>Чернышева</option>
             </select>
+            <p class="error"></p>
           </div>
           <div class="check">
             <label class="label" for="sms">Не отправлять СМС</label>
@@ -103,19 +106,21 @@
         <div class="wrapper_step">Место проживания <span>(шаг 2 из 3)</span></div>
         <hr class="wrapper_step-progress2">
         <div class="inputs-wrapper">
-          <div class="not-required-block">
+          <div class="required-block">
             <label class="label" for="country" >Страна</label>
             <input type="text"
                    name="country"
                    placeholder="Страна..."
                    v-model="secondPage.country">
+            <p class="error"></p>
           </div>
-          <div class="not-required-block">
+          <div class="required-block">
             <label class="label" for="area" >Область</label>
             <input type="text"
                    name="area"
                    placeholder="Область..."
                    v-model="secondPage.area">
+            <p class="error"></p>
           </div>
           <div class="required-block">
             <label class="label" for="city" >Город<span>*</span></label>
@@ -134,19 +139,21 @@
                    v-model="secondPage.street">
             <p class="error"></p>
           </div>
-          <div class="not-required-block">
+          <div class="required-block">
             <label class="label" for="house" >Дом</label>
             <input type="text"
                    name="house"
                    placeholder="Дом..."
                    v-model="secondPage.house">
+            <p class="error"></p>
           </div>
-          <div class="not-required-block">
+          <div class="required-block">
             <label class="label" for="index" >Индекс</label>
             <input type="text"
                    name="index"
                    placeholder="Индекс..."
                    v-model="secondPage.index">
+            <p class="error"></p>
           </div>
           <div class="button-conteiner">
             <button class="back" @click="stepBack">Предыдущий шаг</button>
@@ -175,17 +182,17 @@
           <div class="required-block">
             <label class="label" for="birthday" >Дата выдачи<span>*</span></label>
             <div class="date">
-              <input type="text"
+              <input type="number"
                      name="day"
                      placeholder="ДД"
                      v-model="thirdPage.day"
                      :class="{invalid: ($v.thirdPage.day.$dirty && $v.thirdPage.day.required), 'error-input': ($v.thirdPage.day.$error)}">
-              <input type="text"
+              <input type="number"
                      name="mounth"
                      placeholder="ММ"
                      v-model="thirdPage.mounth"
                      :class="{invalid: ($v.thirdPage.mounth.$dirty && $v.thirdPage.mounth.required), 'error-input': ($v.thirdPage.mounth.$error)}">
-              <input type="text"
+              <input type="number"
                      name="year"
                      placeholder="ГГГГ"
                      v-model="thirdPage.year"
@@ -193,13 +200,15 @@
             </div>
             <p class="error"><span v-if="$v.thirdPage.year.$error" >Ошибка: Обязательные поля, проверьте правильность введенных данных</span></p>
           </div>
-          <div class="not-required-block">
+          <div class="required-block">
             <label class="label" for="serial">Серия</label>
             <input type="number" name="serial" placeholder="Серия..." v-model="thirdPage.serial">
+            <p class="error"></p>
           </div>
-          <div class="not-required-block">
+          <div class="required-block">
             <label class="label" for="num">Номер</label>
             <input type="number" name="num" placeholder="Номер..." v-model="thirdPage.num">
+            <p class="error"></p>
           </div>
           <div class="required-block">
             <label class="label" for="from">Кем выдан</label>
@@ -360,9 +369,9 @@ export default {
 <style lang="sass">
   form
     width: 800px
-    height: 730px
+    height: 800px
     margin: auto
-    margin-top: 100px
+    margin-top: 50px
     background: #FFFFFF
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.13)
     border-radius: 20px
@@ -429,8 +438,6 @@ export default {
       margin-top: 15px
       div
         width: 250px
-    .not-required-block
-      height: 80px
     div
       width: 350px
       display: flex
@@ -606,10 +613,12 @@ export default {
     .final
       width: 100%
 
+
   @media screen and (max-width: 660px)
     form
       margin: 0
       width: 100%
+      height: 1330px
 
     .wrapper
       width: 90%
@@ -626,13 +635,13 @@ export default {
     .final
       margin-top: 300px
       h1
-       font-size: 18px
+       font-size: 14px
 
   @media screen and (max-width: 300px)
     form
       margin: 0
       width: 100%
-      height: 850px
+      height: 900px
 
     .wrapper
       width: 90%

@@ -1,3 +1,4 @@
 module.exports = {
-    publicPath: 'vue-task1'
+    publicPath: '',
+    runtimeCompiler: true
 }
